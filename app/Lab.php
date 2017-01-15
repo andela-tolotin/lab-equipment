@@ -11,5 +11,13 @@ class Lab extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'model_no']; 
+    protected $fillable = [
+        'title',
+        'model_no',
+        'user_id'
+    ];
+
+    public function users() {
+    	return $this->hasMany('LabEquipment\User');
+    }
 }
