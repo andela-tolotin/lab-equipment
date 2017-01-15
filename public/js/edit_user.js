@@ -44,8 +44,7 @@
           })
           .fail(function(error) {
             toastr.error(error.toString());
-          })
-
+          });
         return false;
       });
     }
@@ -66,6 +65,7 @@
       return error;
     }
 
+<<<<<<< HEAD
     clearFormFieds() {
       $('form#update_user_bio')
         .find('input[type="password"]')
@@ -79,6 +79,10 @@
         headers:{
         'X-CSRF-Token': $('input[name="_token"]').val()
       },
+=======
+    makeAjaxCall(url, params, method) {
+      return $.ajax({
+>>>>>>> 701eb3e4bf919ffa8085ed4afe58f37a3fca92d9
         url: url,
         type: method,
         dataType: 'json',
