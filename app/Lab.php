@@ -17,7 +17,13 @@ class Lab extends Model
         'user_id'
     ];
 
-    public function users() {
+    public function users() 
+    {
     	return $this->hasMany('LabEquipment\User');
+    }
+
+    public function equipments()
+    {
+    	return $this->hasMany('LabEquipment\Equipment');
     }
 }
