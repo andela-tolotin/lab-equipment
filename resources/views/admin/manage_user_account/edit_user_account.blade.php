@@ -15,19 +15,18 @@
         <div class="col-sm-12">
             <table class="table table-responsive">
                 <tbody>
-                @if ($users->count() > 0)
-                @foreach($users as $index => $user)
+                    @if ($users->count() > 0)
+                    @foreach($users as $index => $user)
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $user->student_id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>{{ $user->phone }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->lab->title }}</td>
+                        <td>{{ $user->phone }}</td>
                         <td><a href="#"  class="student-edit" id="student{{$user->id}}">Edit</a></td>
                     </tr>
-                @endforeach
-                @endif
+                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
