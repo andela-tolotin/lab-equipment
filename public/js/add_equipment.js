@@ -61,9 +61,9 @@
         equipment.makeAjaxCall('/equipments/'+id+'/update', formData, 'POST')
           .done(function(res) {
             toastr.success(res.message);
-            console.log(res)
-            //let newEquipment = equipment.addNewEquipmentToHtmlTable(data.equipment);
-            //$('table#list-equipment').append(newEquipment);
+            let newEquipment = equipment.addNewEquipmentToHtmlTable(res.equipment);
+            $(document).find('table tr#edit-eqipment'+id).replaceWith(newEquipment);
+            $(document).find('div#edit-eqipment'+id).slideUp();
             equipment.clearFormFields();
             return false
           })
