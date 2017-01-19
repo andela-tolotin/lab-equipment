@@ -6,7 +6,6 @@
 				<h4 class="modal-title">Edit User | {{ $user->name }}</h4>
 			</div>
 			<div class="modal-body">
-				
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default no" data-dismiss="modal" id="{{ $user->id }}">No</button>
