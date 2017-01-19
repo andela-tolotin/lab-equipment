@@ -55,6 +55,12 @@
 						</select>
 					</div>
 					<hr>
+					<div class="col-sm-4">
+						<a class="btn btn-link" href="{{ url('/password/reset') }}">
+                            Send reset password link
+                        </a>
+					</div>
+					<hr>
 				</form>
 			</div>
 			<div class="modal-footer">
