@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-12">
-            <table class="table table-responsive">
+            <table class="table table-responsive user-account-list">
                 <tbody>
                     @if ($users->count() > 0)
                     @foreach($users as $index => $user)
@@ -31,10 +31,11 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>
-                        @if (is_null($user->deleted_at)) 
-                        {{ 'Active' }} 
-                        @else  {{ 'Inactive' }} 
-                        @endif
+                            @if (is_null($user->deleted_at))
+                            {{ 'Active' }}
+                            @else
+                            {{ 'Inactive' }}
+                            @endif
                         </td>
                         <td><a href="#"  class="student-edit" id="student{{$user->id}}">Edit</a></td>
                     </tr>
