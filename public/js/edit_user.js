@@ -12,11 +12,14 @@
       let user = new User;
       let editLink = $('a.student-edit');
       editLink.on('click', function() {
+        let modalWrapper = $('.manage-user-account');
+        let modalBody = modalWrapper.find('div.modal-body');
         let _this = $(this);
         let userId = _this.attr('id');
-        user.makeAjaxCall('/users/'+userId+'/edit', '', 'GET')
+        user.makeAjaxRequest('/users/'+userId+'/edit', '', 'GET')
           .done(function(data) {
-            console.log(data);
+            modalBody.append(data);
+            modalWrapper.modal('show');
           })
           .fail(function(error) {
             console.log(error)
@@ -69,6 +72,18 @@
         url: url,
         type: method,
         dataType: 'json',
+        data: params,
+      });
+    }
+
+     makeAjaxRequest(url, params, method) {
+      return $.ajax({
+        headers:{
+        'X-CSRF-Token': $('input[name="_token"]').val()
+      },
+        url: url,
+        type: method,
+        //dataType: 'json',
         data: params,
       });
     }
