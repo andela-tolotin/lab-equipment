@@ -67,6 +67,7 @@ class User extends Authenticatable
     {
         return $query
             ->orderBy('id', 'desc')
+            ->withTrashed()
             ->get();
     }
 }

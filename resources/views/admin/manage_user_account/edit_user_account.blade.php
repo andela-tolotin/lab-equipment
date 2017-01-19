@@ -30,6 +30,12 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
+                        <td>
+                        @if (is_null($user->deleted_at)) 
+                        {{ 'Active' }} 
+                        @else  {{ 'Inactive' }} 
+                        @endif
+                        </td>
                         <td><a href="#"  class="student-edit" id="student{{$user->id}}">Edit</a></td>
                     </tr>
                     @endforeach
