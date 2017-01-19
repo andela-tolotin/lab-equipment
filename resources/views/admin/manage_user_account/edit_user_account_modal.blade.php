@@ -39,6 +39,7 @@
 					</div>
 					<hr>
 					<div class="col-sm-4">
+					<label for="office" class="col-sm-2 control-label">Account Status</label>
 						<select name="status" id="status" class="form-control" required="required">
 							<option value="">Status</option>
 							<option value="1">Active</option>
@@ -47,11 +48,20 @@
 					</div>
 					<hr>
 					<div class="col-sm-4">
-						<label for="office" class="col-sm-2 control-label">Assign Role</label>
+						<label for="role" class="col-sm-2 control-label">Assign Role</label>
 						<select name="role" id="status" class="form-control" required="required">
 							<option value="">Change Role</option>
 							<option value="1">Student</option>
 							<option value="2">Admin</option>
+						</select>
+					</div>
+					<hr>
+					<div class="col-sm-4">
+						<label for="equipment" class="col-sm-2 control-label">Status by equipment</label>
+						<select name="role" id="equipment" class="form-control" required="required">
+							<option value="">Status</option>
+							<option value="1">Active</option>
+                            <option value="0">Inactive</option>
 						</select>
 					</div>
 					<hr>

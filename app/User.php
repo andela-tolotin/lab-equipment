@@ -70,4 +70,12 @@ class User extends Authenticatable
             ->withTrashed()
             ->get();
     }
+
+    public function scopeFindAllBookings($query, $userId)
+    {
+        return $query
+            ->where('id', $userId)
+            ->first()
+            ->bookings();
+    }
 }
