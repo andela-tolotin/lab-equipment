@@ -3,10 +3,28 @@
     return $(this).each(() => {
       let user = new User;
       user.updateProfile();
+      user.editUserAccount();
     });
   }
 
   class User {
+    editUserAccount() {
+      let user = new User;
+      let editLink = $('a.student-edit');
+      editLink.on('click', function() {
+        let _this = $(this);
+        let userId = _this.attr('id');
+        user.makeAjaxCall('/users/'+userId+'/edit', '', 'GET')
+          .done(function(data) {
+            console.log(data);
+          })
+          .fail(function(error) {
+            console.log(error)
+          })
+        return false;
+      });
+    }
+
     updateProfile() {
       let user = new User;
       let saveBtn = $('#save-bio');
@@ -34,7 +52,6 @@
         user.makeAjaxCall('/users/'+email, params, 'PUT')
           .done(function(data) {
             toastr.success(data.message);
-            user.clearFormFieds();
             return false
           })
           .fail(function(error) {
@@ -58,4 +75,4 @@
   }
   })(jQuery);
 
-  $('form#update_user_bio').UpdateUserInfo();
+  $('body').UpdateUserInfo();
