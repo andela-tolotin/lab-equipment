@@ -57,7 +57,7 @@
 					<hr>
 					<div class="col-sm-4">
 						<a class="btn btn-link" href="{{ url('/password/reset') }}">
-                            Send reset password link
+                            Reset Password(send a link to reset password)
                         </a>
 					</div>
 					<hr>
