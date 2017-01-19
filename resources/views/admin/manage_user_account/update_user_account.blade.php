@@ -53,8 +53,8 @@
 		</div>
 	</div>
 	<hr>
-	<h6>Status by equipment</h6>
 	@if (!is_null($user->bookings))
+	<h6>Status by equipment</h6>
 	@foreach($user->bookings as $booking)
 	<div class="form-group">
 		<label for="equipment[]" class="col-sm-2 control-label"> {{ $booking->equipment->title }}</label>
