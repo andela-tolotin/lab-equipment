@@ -1,4 +1,4 @@
-<form class="form-horizontal user-account" id="user-account{{$user->id}}">
+<form class="form-horizontal user-account" id="{{$user->id}}">
 	<div class="form-group">
 		<label for="student_id" class="col-sm-2 control-label">Student ID</label>
 		<div class="col-sm-10">

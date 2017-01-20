@@ -4,10 +4,26 @@
       let user = new User;
       user.updateProfile();
       user.editUserAccount();
+      user.updateUserAccount();
     });
   }
 
   class User {
+    updateUserAccount() {
+      let user = new User;
+      let submitBtn = $('button.ok');
+      submitBtn.on('click', function() {
+        let form = $(document).find('div#manage-user-account div.modal-body');
+        let formObject = form.find('input, select');
+        
+         return false;
+      });
+      // form.submit(function(evt) {
+      //   evt.preventDefault();
+      //   alert('Hi');
+      // });
+    }
+
     editUserAccount() {
       let user = new User;
       let editLink = $('a.student-edit');
