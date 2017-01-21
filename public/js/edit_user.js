@@ -82,8 +82,7 @@
 
     editUserAccount() {
       let user = new User;
-      let editLink = $('a.student-edit');
-      editLink.on('click', function() {
+      $('body').on('click', 'a.student-edit', function() {
         let modalWrapper = $('.manage-user-account');
         let modalBody = modalWrapper.find('div.modal-body');
         let _this = $(this);
