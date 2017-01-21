@@ -21,14 +21,39 @@
               let route = '/labs/'+labId+'/users';
               user.makeAjaxCall(route, '', 'GET')
                 .done(function(data) {
-                  console.log(data);
+                  if (data.email !== undefined) {
+                    return user.buildUserTable(data);
+                  }
+                  return toastr.error(data.message);
                 })
                 .fail(function(error) {
-                  console.log(error);
+                  //console.log(error);
                 });
             }
           return false;
       });
+    }
+
+    buildUserTable(data) {
+      let tr = '';
+      for (let user in data) {
+        //console.log(user.id);
+      //   tr += <tr>
+      //     <td>{{ $loop->index + 1 }}</td>
+      //     <td>{{ $user->student_id }}</td>
+      //     <td>{{ $user->name }}</td>
+      //     <td>{{ $user->email }}</td>
+      //     <td>{{ $user->phone }}</td>
+      //     <td>
+      //         @if (is_null($user->deleted_at))
+      //         {{ 'Active' }}
+      //         @else
+      //         {{ 'Inactive' }}
+      //         @endif
+      //     </td>
+      //     <td><a href="#"  class="student-edit" id="{{$user->id}}">Edit</a></td>
+      // </tr>
+      }
     }
 
     updateUserAccount() {

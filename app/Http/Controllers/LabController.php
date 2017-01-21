@@ -23,7 +23,7 @@ class LabController extends Controller
 
     	return response()->json([
     		'message' => 'Error creating Lab'
-    	]);
+    	], 400);
     }
 
     public function getLabUsers(Request $request, $id)
@@ -35,7 +35,7 @@ class LabController extends Controller
         }
 
         return response()->json([
-            'message' => 'Error creating Lab'
-        ]);
+            'message' => 'Lab Users not found'
+        ], 404);
     }
 }
