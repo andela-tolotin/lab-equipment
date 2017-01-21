@@ -25,4 +25,12 @@ class LabController extends Controller
     		'message' => 'Error creating Lab'
     	]);
     }
+
+    public function getLabUsers(Request $request)
+    {
+        $labUsers = Lab::findAll();
+        if (count($labUsers) > 0) {
+            return response()->json($labUsers)
+        }
+    }
 }

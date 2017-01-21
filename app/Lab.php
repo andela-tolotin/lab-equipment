@@ -38,6 +38,5 @@ class Lab extends Model
     {
         return $query
             ->find($id);
-            //->first();
     }
 }
