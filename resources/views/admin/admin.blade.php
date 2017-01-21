@@ -141,9 +141,29 @@
             <p>
                 <h4 class="student"> Hello, {{ Auth::user()->name }}!</h4>
                 <form action="/logout" method="post">
-                <button type="submit" class=" btn btn-default pull-right">Logout</button>
+                    <button type="submit" class=" btn btn-default pull-right">Logout</button>
                     <input type="hidden" name="_token" id="_token" class="form-control" value="{{ csrf_token() }}">
                 </form>
+            </p>
+            <hr>
+            <p>
+                <h5>Notifications <a class="pull-right">Read all</a></h5>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</td>
+                            <td>{{ date('Y/m/d') }}</td>
+                        </tr>
+                        <tr>
+                            <td> dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</td>
+                            <td>{{ date('Y/m/d') }}</td>
+                        </tr>
+                        <tr>
+                            <td> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, </td>
+                            <td>{{ date('Y/m/d') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </p>
             <hr>
         </div>
