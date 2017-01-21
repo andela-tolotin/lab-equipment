@@ -13,7 +13,6 @@
       saveBtn.on('click', function() {
         let title = $('form#manage_lab').find('#title').val();
         let modelNo = $('form#manage_lab').find('#model_no').val();
-        let assignedUser = $('form#manage_lab').find('#assign_user').val();
 
         if (lab.checkforEmptyFields().length > 0) {
           toastr.error('Filled the fields in red!');
@@ -27,8 +26,8 @@
         let params = {
           'title': title,
           'model_no': modelNo,
-          'user': assignedUser,
         }
+
         lab.makeAjaxCall('/labs/add', params, 'POST')
           .done(function(data) {
             toastr.success(data.message);

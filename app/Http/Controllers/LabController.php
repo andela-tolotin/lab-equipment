@@ -12,7 +12,6 @@ class LabController extends Controller
     	$lab = Lab::create([
     		'title' => $request->title,
     		'model_no' => $request->model_no,
-    		'user_id' => $request->user
     	]);
 
     	if (count($lab) > 0) {
