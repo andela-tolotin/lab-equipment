@@ -29,7 +29,10 @@
 
         lab.makeAjaxCall('/labs/'+labId+'/add', params, 'PUT')
           .done(function(data) {
-            toastr.success(data.message);
+            if (data.message == 200) {
+              toastr.success('User was assigned to Lab successfully');
+            }
+            toastr.error(data.message);
             return false
           })
           .fail(function(error) {

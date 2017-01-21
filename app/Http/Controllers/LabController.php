@@ -43,6 +43,16 @@ class LabController extends Controller
     {
         $lab = Lab::findOneById($id);
 
+        $labUser = LabUser::where('user_id', $request->user)
+            ->where('lab_id', $id)
+            ->first();
+
+        if ($labUser->count() > 0) {
+            return response()->json([
+                'message' => 'User has been assigned to Lab before'
+            ]); 
+        }
+
         if ($lab->count() > 0) {
             $labUser = LabUser::create([
                 'user_id' => $request->user,
@@ -51,7 +61,7 @@ class LabController extends Controller
 
             if ($labUser->count() > 0) {
                 return response()->json([
-                    'message' => 'User was assigned to Lab successfully'
+                    'message' => 200,
                 ]);
             }
         }
