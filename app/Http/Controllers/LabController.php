@@ -37,4 +37,13 @@ class LabController extends Controller
             'message' => 'Lab Users not found'
         ], 404);
     }
+
+    public function assignUserToLab(Request $request, $id)
+    {
+        $lab = Lab::findOneById($id);
+
+        if ($lab->count() > 0) {
+            
+        }
+    }
 }

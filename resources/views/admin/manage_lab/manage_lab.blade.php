@@ -26,7 +26,7 @@
     <div class="form-group">
         <label for="assign_user" class="col-sm-2 control-label">Assign User</label>
         <div class="col-sm-10">
-            <select name="assign_user" id="assign_user" class="form-control" required="required">
+            <select name="user" id="user" class="form-control" required="required">
                 <option value="">Choose User</option>
                 @if ($users->count() > 0)
                 @foreach($users as $user)
@@ -37,9 +37,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="assign_user" class="col-sm-2 control-label">Assign User</label>
+        <label for="lab" class="col-sm-2 control-label">Choose Lab</label>
         <div class="col-sm-10">
-            <select name="assign_user" id="assign_user" class="form-control" required="required">
+            <select name="lab" id="lab" class="form-control" required="required">
                 <option value="">Choose Lab</option>
                 @if ($labs->count() > 0)
                 @foreach($labs as $lab)
@@ -51,7 +51,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-large btn-default" id="save-lab">Save</button>
+            <button type="submit" class="btn btn-large btn-default" id="save-lab-user">Save</button>
         </div>
     </div>
 </form>
