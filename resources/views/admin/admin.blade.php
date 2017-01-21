@@ -165,7 +165,17 @@
                     </tbody>
                 </table>
             </p>
-            <hr>
+            <p>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td><strong>{{ Auth::user()-> name }}</strong></td>
+                            <td><strong>Lab: {{ Auth::user()->labUser[0]->user->name }}</strong></td>
+                            <td><a href="#" title="{{ Auth::user()-> name}}">See my page</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
         </div>
         @endif
     </div>
