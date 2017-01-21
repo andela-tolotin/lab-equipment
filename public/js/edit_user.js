@@ -38,16 +38,16 @@
 
     buildUserTable(data) {
       let tableRow = '';
-      let counter = 0;
+      let counter = 1;
       for (let user in data) {
         tableRow += '<tr>' +
-          '<td></td>' +
+          '<td>'+counter+'</td>' +
           '<td>'+data[user].student_id+'</td>' +
           '<td>'+data[user].name+'</td>' +
           '<td>'+data[user].email+'</td>' +
           '<td>'+data[user].phone+'</td>'+
           '<td>';
-          if (data[user].deleted_at == 'null') {
+          if (data[user].deleted_at == null) {
             tableRow += 'Active'; 
           } else {
             tableRow += 'Inactive';
