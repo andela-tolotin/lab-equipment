@@ -29,8 +29,9 @@ class LabController extends Controller
     public function getLabUsers(Request $request, $id)
     {
         $lab = Lab::findOneById($id);
+
         if (count($lab) > 0) {
-            return response()->json($lab->users, 200);
+            return response()->json($lab->user, 200);
         }
 
         return response()->json([

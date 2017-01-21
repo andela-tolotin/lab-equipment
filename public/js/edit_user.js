@@ -11,24 +11,23 @@
 
   class User {
     getLabUsers() {
-      let user = User;
+      let user = new User;
       let select = $('form#edit-user-account #lab');
-      select.on('change', function() {
-        let _this = $(this);
-        let labId = _this.val();
+          select.on('change', function() {
+            let _this = $(this);
+            let labId = _this.val();
 
-        if (lab > 0) {
-          let route = '/labs/'+labId+'/users';
-          user.makeAjaxCall(route, '', 'GET')
-            .done(function(data) {
-              console.log(data);
-            })
-            .fail(function(error) {
-              console.log(error);
-            }) 
-        }
-
-        return false;
+            if (labId > 0) {
+              let route = '/labs/'+labId+'/users';
+              user.makeAjaxCall(route, '', 'GET')
+                .done(function(data) {
+                  console.log(data);
+                })
+                .fail(function(error) {
+                  console.log(error);
+                });
+            }
+          return false;
       });
     }
 
