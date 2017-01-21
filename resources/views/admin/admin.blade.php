@@ -139,8 +139,11 @@
         @else
         <div class="col-md-8 col-md-offset-2">
             <p>
-                <h4 class="student"> Hello, {{ Auth::user()->name }}!
-                <a class="pull-right" href="/logout" style="font-weight: 300; font-size: 16px;">Logout</a></h4>
+                <h4 class="student"> Hello, {{ Auth::user()->name }}!</h4>
+                <form action="/logout" method="post">
+                <button type="submit" class=" btn btn-default pull-right">Logout</button>
+                    <input type="hidden" name="_token" id="_token" class="form-control" value="{{ csrf_token() }}">
+                </form>
             </p>
             <hr>
         </div>
