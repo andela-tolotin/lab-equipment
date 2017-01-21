@@ -19,9 +19,4 @@ class LabUser extends Model
 	{
 		return $this->belongsTo('LabEquipment\User');
 	}
-
-	public function lab()
-	{
-		return $this->belongsTo('LabEquipment\Lab');
-	}
 }
