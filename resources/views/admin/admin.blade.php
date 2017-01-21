@@ -170,9 +170,23 @@
                     <tbody>
                         <tr>
                             <td><strong>{{ Auth::user()-> name }}</strong></td>
-                            <td><strong>Lab: {{ 
-                                !is_null(@Auth::user()->labUser[0])? Auth::user()->labUser[0]->user->name: 'Nill' }}</strong></td>
+                            <td><strong>Lab: {{
+                            !is_null(@Auth::user()->labUser[0])? Auth::user()->labUser[0]->user->name: 'Nill' }}</strong></td>
                             <td><a href="#" title="{{ Auth::user()-> name}}">See my page</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+            <hr>
+            <p>
+            <h5><strong>Upcoming Booking</strong> <span class="text-danger pull-right">Cancellation is allowed until 1hr. before your reservation</span></h5>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td><strong>NMR</strong></td>
+                            <td>{{ date('Y/m/d') }}</td>
+                            <td>11:00 - 11:10</td>
+                            <td><button type="button" class="btn btn-default pull-right">Cancel</button></td>
                         </tr>
                     </tbody>
                 </table>
