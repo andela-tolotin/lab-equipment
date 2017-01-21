@@ -13,19 +13,23 @@
       let saveBtn = $('#save-lab-user');
       saveBtn.on('click', function() {
         let user = $('form#assign_user_to_lab').find('#user').val();
-        let lab = $('form#assign_user_to_lab').find('#lab').val();
+        let labId = $('form#assign_user_to_lab').find('#lab').val();
 
-        if (lab.checkforEmptyFields().length > 0) {
-          toastr.error('Filled the fields in red!');
+        if (user == '') {
+          toastr.error('Choose a user to assign to lab!');
+          return false;
+        }
+
+        if (labId == '') {
+          toastr.error('Choose lab!');
           return false;
         }
         // make a put request to the server side
-        let params = {'user': user}
+        let params = {'user': user};
 
-        lab.makeAjaxCall('/labs/'+lab+'/add', params, 'PUT')
+        lab.makeAjaxCall('/labs/'+labId+'/add', params, 'PUT')
           .done(function(data) {
             toastr.success(data.message);
-            lab.clearFormFieds();
             return false
           })
           .fail(function(error) {
@@ -55,7 +59,7 @@
         lab.makeAjaxCall('/labs/add', params, 'POST')
           .done(function(data) {
             toastr.success(data.message);
-            lab.clearFormFieds();
+            lab.checkforEmptyFields();
             return false
           })
           .fail(function(error) {
@@ -81,7 +85,7 @@
       return error;
     }
 
-    clearFormFieds() {
+    clearFormFields() {
       $('form#manage_lab')
         .find('input[type="text"]')
         .each(function(index, el) {

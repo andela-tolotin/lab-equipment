@@ -8,6 +8,8 @@ class LabUser extends Model
 {
 	protected $fillable = ['user_id', 'lab_id'];
 
+	protected $table = 'labusers';
+
 	public function lab()
 	{
 		return $this->belongsTo('LabEquipment\Lab');
@@ -16,5 +18,10 @@ class LabUser extends Model
 	public function user()
 	{
 		return $this->belongsTo('LabEquipment\User');
+	}
+
+	public function lab()
+	{
+		return $this->belongsTo('LabEquipment\Lab');
 	}
 }

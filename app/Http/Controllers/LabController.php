@@ -2,8 +2,9 @@
 
 namespace LabEquipment\Http\Controllers;
 
-use Illuminate\Http\Request;
 use LabEquipment\Lab;
+use LabEquipment\LabUser;
+use Illuminate\Http\Request;
 
 class LabController extends Controller
 {
@@ -43,7 +44,20 @@ class LabController extends Controller
         $lab = Lab::findOneById($id);
 
         if ($lab->count() > 0) {
-            
+            $labUser = LabUser::create([
+                'user_id' => $request->user,
+                'lab_id' => $id
+            ]);
+
+            if ($labUser->count() > 0) {
+                return response()->json([
+                    'message' => 'User was assigned to Lab successfully'
+                ]);
+            }
         }
+
+        return response()->json([
+            'message' => 'Error Assigning user to Lab'
+        ], 400);
     }
 }
