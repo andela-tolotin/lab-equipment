@@ -31,7 +31,12 @@ class LabController extends Controller
         $lab = Lab::findOneById($id);
 
         if (count($lab) > 0) {
-            return response()->json($lab->user, 200);
+            $users = [];
+            foreach ($lab->labUsers as $index => $users) {
+                $users[$index] = $users->user;
+            }
+
+            return response()->json($users, 200);
         }
 
         return response()->json([

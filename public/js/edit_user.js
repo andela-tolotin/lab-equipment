@@ -21,6 +21,7 @@
               let route = '/labs/'+labId+'/users';
               user.makeAjaxCall(route, '', 'GET')
                 .done(function(data) {
+                  console.log(data);
                   if (data.email !== undefined) {
                     return user.buildUserTable(data);
                   }
