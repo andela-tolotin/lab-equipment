@@ -170,7 +170,8 @@
                     <tbody>
                         <tr>
                             <td><strong>{{ Auth::user()-> name }}</strong></td>
-                            <td><strong>Lab: {{ Auth::user()->labUser[0]->user->name }}</strong></td>
+                            <td><strong>Lab: {{ 
+                                !is_null(@Auth::user()->labUser[0])? Auth::user()->labUser[0]->user->name: 'Nill' }}</strong></td>
                             <td><a href="#" title="{{ Auth::user()-> name}}">See my page</a></td>
                         </tr>
                     </tbody>
