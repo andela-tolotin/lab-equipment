@@ -5,10 +5,33 @@
       user.updateProfile();
       user.editUserAccount();
       user.updateUserAccount();
+      user.getLabUsers();
     });
   }
 
   class User {
+    getLabUsers() {
+      let user = User;
+      let select = $('form#edit-user-account #lab');
+      select.on('change', function() {
+        let _this = $(this);
+        let labId = _this.val();
+
+        if (lab > 0) {
+          let route = '/labs/'+labId+'/users';
+          user.makeAjaxCall(route, '', 'GET')
+            .done(function(data) {
+              console.log(data);
+            })
+            .fail(function(error) {
+              console.log(error);
+            }) 
+        }
+
+        return false;
+      });
+    }
+
     updateUserAccount() {
       let user = new User;
       let submitBtn = $('button.ok');

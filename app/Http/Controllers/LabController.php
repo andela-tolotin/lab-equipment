@@ -26,11 +26,15 @@ class LabController extends Controller
     	]);
     }
 
-    public function getLabUsers(Request $request)
+    public function getLabUsers(Request $request, $id)
     {
-        $labUsers = Lab::findAll();
-        if (count($labUsers) > 0) {
-            return response()->json($labUsers)
+        $lab = Lab::findOneById($id);
+        if (count($lab) > 0) {
+            return response()->json($lab->users, 200);
         }
+
+        return response()->json([
+            'message' => 'Error creating Lab'
+        ]);
     }
 }
