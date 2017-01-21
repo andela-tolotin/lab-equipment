@@ -191,6 +191,50 @@
                     </tbody>
                 </table>
             </p>
+            <hr>
+            <p>
+                <h5>Book an Equipment</h5>
+                <table class="table table-responsive" id="list-equipment">
+        <tbody>
+            @if($equipments->count() > 0)
+            @foreach($equipments as $equipment)
+            <tr id="edit-eqipment{{ $equipment->id }}">
+                <td>{{ $equipment->model_no }}</td>
+                <td><img src="{{ $equipment->equipment_photo }}" style="width: 50px; height: 50px;"></td>
+                <td>
+                    <Strong>Status</Strong><br>
+                    <Strong>Unit Time</Strong><br>
+                    <Strong>Max Time(per day)</Strong><br>
+                </td>
+                <td>
+                    {{ $equipment->availability == 1? 'Available': 'Unavailable'}}<br>
+                    {{ $equipment->price_per_unit_time}}<br>
+                    {{ $equipment->max_reservation_time}}<br>
+                </td>
+                <td>
+                    <Strong>Open</Strong><br>
+                    <Strong>Cancel</Strong><br>
+                </td>
+                <td>
+                    <span>30 minutes before</span><br>
+                    <span>1 hour before</span><br>
+                </td>
+                <td><button type="button" class="btn btn-default pull-right">Book Now</button></td>
+            </tr>
+            <tr>
+            <td colspan="3"></td>
+              <td colspan="3">
+                <span>Your Lab usage for this month: <strong>2:00</strong></span><br>
+                <span>Your usage for this month <strong>1:00</strong></span><br>
+                <span>You have not used this Equipment for : <strong>10 days</strong><br>(Your account will be blocked  day)</span><br>
+                </td>
+                <td colspan="1"></td>
+            </tr>
+            @endforeach
+            @endif
+        </tbody>
+    </table>
+            </p>
         </div>
         @endif
     </div>
