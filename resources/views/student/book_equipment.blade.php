@@ -33,11 +33,19 @@
 			{{-- <div class="container"> --}}
 				<div class="row">
 					<div class="col-md-5">
+						<div class="form-group">
+							<div class='input-group date' id='datetimepicker1'>
+								<input type='text' class="form-control" />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
+							</div>
+						</div>
 						<hr>
-						<h5>Daytime(9am - 9pm)</h5>
+						<h5>Daytime (9am - 9pm)</h5>
 						<h5>Maximum reservation time: 3hrs</h5>
 						<hr>
-						<h5>Night Time(9pm - 9am)</h5>
+						<h5>Night Time (9pm - 9am)</h5>
 						<h5>Maximum reservation time: Unlimited</h5>
 						<hr>
 						<h5>Cancellation policy</h5>
