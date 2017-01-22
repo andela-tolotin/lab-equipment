@@ -42,6 +42,10 @@
         <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker();
+                $("#datetimepicker1").on("dp.change", function (e) {
+                    //console.log(e.date);
+                    $(document).find('span#time').text(e.date);
+                });
             });
         </script>
     </body>

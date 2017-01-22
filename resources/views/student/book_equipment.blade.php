@@ -53,6 +53,7 @@
 						<hr>
 					</div>
 					<div class="col-md-7">
+					<h5>You select <span id="time"></span></h5>
 						<table class="table table-hover">
 							<tbody>
 								<tr>

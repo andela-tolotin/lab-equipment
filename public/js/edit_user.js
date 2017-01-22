@@ -24,20 +24,24 @@
 
         if (oldPassword == '') {
           toastr.error('Enter current password!');
+          $btn.button('reset')
           return false;
         }
         if (newPassword == '') {
           toastr.error('Enter new password!');
+          $btn.button('reset')
           return false;
         }
 
         if (confirmPassword == '') {
           toastr.error('Pls confirm your password!');
+          $btn.button('reset')
           return false;
         }
 
         if (newPassword != confirmPassword) {
           toastr.error('Both passwords does not match!');
+          $btn.button('reset')
           return false;
         }
         // make a put request to the server side
