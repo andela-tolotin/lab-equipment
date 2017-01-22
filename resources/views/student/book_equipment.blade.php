@@ -57,9 +57,13 @@
 						<table class="table table-hover">
 							<tbody>
 								<?php $count = 0; ?>
-								<?php for ($i = 9; $i <= 24; $i++): ?>
+								<?php for ($i = 9; $i <= 33; $i++): ?>
 								<tr>
-									<td>{{ $i.":00" }}</td>
+								@if ($i <= 24)
+								  <td>{{ $i.":00" }}</td>
+								@else 
+								<td>{{ (int)($i - 24).":00" }}</td>
+								@endif
 									<td>
 										<div class="checkbox">
 											<label>

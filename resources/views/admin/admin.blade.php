@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         @if (Auth::user()->role_id == 2)
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             @include('admin.manage_user_account.logout')
             <h4>Admin</h4>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -133,7 +133,7 @@
             <!-- panel-group -->
         </div>
         @else
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             @include('admin.manage_user_account.logout')
             <hr>
             <p>
