@@ -48,6 +48,7 @@
         user.makeAjaxCall('/users/'+email+'/password_change', params, 'PUT')
           .done(function(data) {
             toastr.success(data.message);
+            user.clearFormFields();
             return false
           })
           .fail(function(error) {
@@ -55,6 +56,15 @@
           });
         return false;
       });
+    }
+
+    clearFormFields() {
+      $(document)
+        .find('form#change_password')
+        .find('input[type="password"]')
+        .each(function(index, el) {
+          $(this).val('');
+        });
     }
 
     getUserByStatus() {
