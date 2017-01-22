@@ -11,7 +11,7 @@
 				<tbody>
 					@if($equipment->count() > 0)
 					<tr id="edit-eqipment{{ $equipment->id }}">
-						<td>{{ $equipment->title }}</td>
+						<td><strong>{{ $equipment->title }}</strong></td>
 						<td>{{ $equipment->model_no }}</td>
 						<td>{{ $equipment->maker }}</td>
 						<td><img src="{{ $equipment->equipment_photo }}" style="width: 50px; height: 50px;"></td>
@@ -28,6 +28,33 @@
 				</tbody>
 			</table>
 			<hr>
+			<h5>Calendar</h5>
+			<hr>
+			{{-- <div class="container"> --}}
+				<div class="row">
+					<div class="col-md-5">
+						<hr>
+						<h5>Daytime(9am - 9pm)</h5>
+						<h5>Maximum reservation time: 3hrs</h5>
+						<hr>
+						<h5>Night Time(9pm - 9am)</h5>
+						<h5>Maximum reservation time: Unlimited</h5>
+						<hr>
+						<h5>Cancellation policy</h5>
+						<h5>Before 1hr of reservation</h5>
+						<hr>
+					</div>
+					<div class="col-md-7">
+						<table class="table table-hover">
+							<tbody>
+								<tr>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			{{-- </div> --}}
 		</div>
 	</div>
 </div>
