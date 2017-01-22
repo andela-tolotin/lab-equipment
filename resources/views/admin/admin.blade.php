@@ -184,7 +184,7 @@
             <hr>
             <p>
                 <h5>Book an Equipment</h5>
-                <table class="table table-responsive" id="list-equipment">
+                <table class="table table-responsive" id="book-equipment">
                     <tbody>
                         @if($equipments->count() > 0)
                         @foreach($equipments as $equipment)
@@ -209,7 +209,7 @@
                                 <span>30 minutes before</span><br>
                                 <span>1 hour before</span><br>
                             </td>
-                            <td><button type="button" class="btn btn-default pull-right">Book Now</button></td>
+                            <td><a href="/equipments/{{ $equipment->id }}/booking" class="btn btn-default pull-right">Book Now</a></td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
