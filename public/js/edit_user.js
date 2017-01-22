@@ -22,18 +22,22 @@
         let confirmPassword = $(document).find('form#change_password').find('#com_password').val();
 
         if (oldPassword == '') {
-          return toastr.error('Enter current password!');
+          toastr.error('Enter current password!');
+          return false;
         }
         if (newPassword == '') {
-          return toastr.error('Enter new password!');
+          toastr.error('Enter new password!');
+          return false;
         }
 
         if (confirmPassword == '') {
-          return toastr.error('Pls confirm your password!');
+          toastr.error('Pls confirm your password!');
+          return false;
         }
 
         if (newPassword != confirmPassword) {
-          return toastr.error('Both passwords does not match!');
+          toastr.error('Both passwords does not match!');
+          return false;
         }
         // make a put request to the server side
         let params = {
