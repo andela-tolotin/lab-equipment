@@ -17,7 +17,7 @@
                         </td>
                     </tr>
                     <tr>
-                    <td></td>
+                        <td></td>
                         <td>
                             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                 <div class="panel panel-default">
@@ -39,6 +39,25 @@
                         </tr>
                     </tbody>
                 </table>
+                <p>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select name="equipment" id="equipment" class="form-control" required="required">
+                                        <option value="">Select Equipment</option>
+                                        @if ($equipments->count() > 0)
+                                        @foreach($equipments as $equipment)
+                                        <option value="{{ $equipment->id }}">{{ $equipment->model_no }}</option>
+                                        @endforeach
+                                        @endif
+                                    </select>
+                                </td>
+                                <td><button type="button" class="btn btn-default pull-right book-equipment">Book Now</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
                 <p>
                     <h5><strong>Upcoming Booking</strong> <span class="text-danger pull-right">Cancellation is allowed until 1hr. before your reservation</span></h5>
                     <table class="table table-hover">

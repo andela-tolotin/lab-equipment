@@ -13,9 +13,7 @@ class UserController extends Controller
     {
         $equipments = Equipment::findAll();
 
-        return view('student.my_profile', 
-            compact('equipments')
-        );
+        return view('student.my_profile', compact('equipments'));
     }
 
     public function editUserInfo(Request $request, $email)
