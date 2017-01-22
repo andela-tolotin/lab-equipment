@@ -17,7 +17,8 @@ Route::post('/logout', 'Auth\LoginController@logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/home/profile', 'UserController@profile')->name('my_profile');
+Route::get('/home/profile', 'UserController@viewMyProfile')
+    ->name('my_profile');
 
 Route::get('/users/{status}/view', 'UserController@gettUserStatus');
 Route::get('/users/{userId}/edit', 'UserController@editUserAccount');
