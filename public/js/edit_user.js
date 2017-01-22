@@ -7,10 +7,52 @@
       user.updateUserAccount();
       user.getLabUsers();
       user.getUserByStatus();
+      user.changePassword();
     });
   }
 
   class User {
+    changePassword() {
+      let user = new User;
+      let saveBtn = $(document).find('button#change-password');
+      saveBtn.on('click', function() {
+        let email = $(document).find('form#change_password').find('#email').val();
+        let oldPassword = $(document).find('form#change_password').find('#c_password').val();
+        let newPassword = $(document).find('form#change_password').find('#new_password').val();
+        let confirmPassword = $(document).find('form#change_password').find('#com_password').val();
+
+        if (oldPassword == '') {
+          return toastr.error('Enter current password!');
+        }
+        if (newPassword == '') {
+          return toastr.error('Enter new password!');
+        }
+
+        if (confirmPassword == '') {
+          return toastr.error('Pls confirm your password!');
+        }
+
+        if (newPassword != confirmPassword) {
+          return toastr.error('Both passwords does not match!');
+        }
+        // make a put request to the server side
+        let params = {
+          'email': email,
+          'c_password': oldPassword,
+          'new_password': newPassword
+        }
+        user.makeAjaxCall('/users/'+email+'/password_change', params, 'PUT')
+          .done(function(data) {
+            toastr.success(data.message);
+            return false
+          })
+          .fail(function(error) {
+            toastr.error(error.toString());
+          });
+        return false;
+      });
+    }
+
     getUserByStatus() {
       let user = new User;
       let select = $('form#edit-user-account #status');
