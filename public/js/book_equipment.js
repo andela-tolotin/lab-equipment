@@ -37,6 +37,14 @@
         modal.find('div.modal-body').html(modalContent);
         //alert('Hi');
         modal.modal('show');
+
+        let okBtn = modal.find('button.ok');
+
+        okBtn.on('click', function() {
+          alert('Hi');
+          return false;
+        });
+
         return false;
       });
     }
