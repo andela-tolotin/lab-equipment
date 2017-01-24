@@ -12,6 +12,27 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class UserController extends Controller
 {
+    public function createTrainingRequest(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'student_id' => $request->student_id,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+
+        if (count($user) > 0) {
+            $booking = Booking::create([
+                'user_id' => $user->id,
+                'equipment_id' => $request->equipment,
+                'time_slot' => $request->time_slot,
+                'booking_date' => date_format($date, 'Y-m-d H:i:s'),
+            ]);
+        }
+
+        return view('student.training_request_confirmation');
+    }
+
     public function requestForm()
     {
         $labs = Lab::findAll();
