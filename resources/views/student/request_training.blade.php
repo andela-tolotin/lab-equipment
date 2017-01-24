@@ -6,9 +6,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="text-center">Request a User Training</h4>
+                    <h6 class="text-center"> (First Wed. of each month/max. 5 persons)</h6>
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal training_request" id="training_request">
+                    <p class="text-center">
+                        <small>Welcome to the Chemistry Department Equipment User System.  In order to use a Chemistry Department instruments, an user should first receive the user training . Every first Wed. of the month. Max 5 persons.   Please sign up for the training session by filling out the form below. 
+You can reserve and use the instrument only after the training session and approval of the instructor.</small>
+                    </p>
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
@@ -62,9 +67,9 @@
                                     <?php 
                                         $year = date('Y'); 
                                         $month = date('M');
-                                        for ($m=1; $m<=12; $m++) {
+                                        for ($m = 1; $m <= 12; $m++) {
                                             if ($m >= $month) {
-                                                $month = date('F', mktime(0,0,0,$m, 1, date('Y')));
+                                                $month = date('F', mktime(0, 0, 0, $m, 1, date('Y')));
                                                 echo '<option value='.$year.'.'.$month.'>'.$year.'.'.$month. '</option>';
                                             }
                                         }
