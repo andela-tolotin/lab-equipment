@@ -31,6 +31,7 @@ Route::put('/users/{email}/password_change', 'UserController@changePassword');
 Route::post('/labs/add', 'LabController@createLab');
 Route::get('/labs/{id}/users', 'LabController@getLabUsers');
 Route::put('/labs/{id}/add', 'LabController@assignUserToLab');
+Route::get('/labs/{id}/equipments', 'LabController@getLabEquipments');
 
 Route::post('/equipments/booking', 'BookingController@addBooking');
 

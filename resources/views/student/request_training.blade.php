@@ -8,7 +8,7 @@
                     <h4 class="text-center">Request a User Training</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal training_request">
+                    <form class="form-horizontal training_request" id="training_request">
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
@@ -37,7 +37,7 @@
                             <label for="lab" class="col-sm-2 control-label">Lab</label>
                             <div class="col-sm-10">
                                 <select id="lab" name="lab" class="form-control" required="required">
-                                    <option value="0">Choose Lab</option>
+                                    <option value="">Choose Lab</option>
                                     @if ($labs->count() > 0)
                                     @foreach($labs as $lab)
                                     <option value="{{ $lab->id }}">{{ $lab->title }}</option>
@@ -50,7 +50,7 @@
                             <label for="equipment" class="col-sm-2 control-label">Equipment</label>
                             <div class="col-sm-10">
                                 <select id="equipment" name="equipment" class="form-control" required="required">
-                                    <option value="0">Choose equipment</option>
+                                    <option value="">Choose equipment</option>
                                 </select>
                             </div>
                         </div>
