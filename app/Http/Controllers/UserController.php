@@ -3,6 +3,7 @@
 namespace LabEquipment\Http\Controllers;
 
 use Auth;
+//use Grimthorr\LaravelToast\Toast;
 use LabEquipment\Lab;
 use LabEquipment\User;
 use LabEquipment\Equipment;
@@ -14,24 +15,37 @@ class UserController extends Controller
 {
     public function createTrainingRequest(Request $request)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'student_id' => $request->student_id,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => \Hash::make($request->email),
-        ]);
+        // Allow maximum of 5 students per training request
+        $bookings = Booking::where('booking_date', $request->session)->get();
 
-        if (count($user) > 0) {
-            $booking = Booking::create([
-                'user_id' => $user->id,
-                'equipment_id' => $request->equipment,
-                'time_slot' => 'nil',
-                'booking_date' => $request->session,
+        if (count($bookings) < 5) {
+            $user = User::create([
+                'name' => $request->name,
+                'student_id' => $request->student_id,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => \Hash::make($request->email),
             ]);
+
+            if (count($user) > 0) {
+                $booking = Booking::create([
+                    'user_id' => $user->id,
+                    'equipment_id' => $request->equipment,
+                    'time_slot' => 'nil',
+                    'booking_date' => $request->session,
+                ]);
+            }
+
+            return redirect()->route('training_request_confirmation');
         }
 
-        return redirect()->route('training_request_confirmation');
+        // Create the message
+        //Toast::error('We have reach the maximum of five students for this month');
+        // Return a HTTP response to initiate the new session
+        //return Redirect::to('request_training');
+        
+        abort(400, 'We have reach the maximum of five students for this month');
+
     }
 
     public function requestForm()
