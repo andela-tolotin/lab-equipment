@@ -3,6 +3,7 @@
 namespace LabEquipment\Http\Controllers;
 
 use Auth;
+use LabEquipment\Lab;
 use LabEquipment\User;
 use LabEquipment\Equipment;
 use LabEquipment\Booking;
@@ -11,6 +12,12 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class UserController extends Controller
 {
+    public function requestForm()
+    {
+        $labs = Lab::findAll();
+        return view('student.request_training', compact('labs'));
+    }
+
     public function changePassword(Request $request, $email)
     {
         $user = User::findOneByEmail($email);

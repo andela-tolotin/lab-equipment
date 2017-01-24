@@ -2,11 +2,10 @@
 
 namespace LabEquipment\Http\Controllers;
 
-use Illuminate\Http\Request;
 use LabEquipment\User;
 use LabEquipment\Lab;
 use LabEquipment\Equipment;
-
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -17,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -31,11 +30,5 @@ class HomeController extends Controller
         $labs = Lab::findAll();
         $equipments = Equipment::findAll();
         return view('admin.admin', compact('users', 'labs', 'equipments'));
-    }
-
-    public function requestForm()
-    {
-        $labs = Lab::findAll();
-        return view('student.request_training', compact('labs'));
     }
 }

@@ -16,7 +16,7 @@ Route::post('/logout', 'Auth\LoginController@logout');
 
 Auth::routes();
 
-Route::get('/training/register', 'HomeController@requestForm')
+Route::get('/training/register', 'UserController@requestForm')
     ->name('request_training');
 
 Route::get('/home', 'HomeController@index');
