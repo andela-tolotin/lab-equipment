@@ -31,6 +31,10 @@ Route::put('/users/{email}/password_change', 'UserController@changePassword');
 Route::post('/training/request/create', 'UserController@createTrainingRequest')
     ->name('create-training-request');
 
+Route::get('request/training/confirmation', function() {
+    return view('student.training_request_confirmation');
+})->name('training_request_confirmation');
+
 Route::post('/labs/add', 'LabController@createLab');
 Route::get('/labs/{id}/users', 'LabController@getLabUsers');
 Route::put('/labs/{id}/add', 'LabController@assignUserToLab');
