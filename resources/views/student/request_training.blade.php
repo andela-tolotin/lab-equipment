@@ -59,6 +59,16 @@
                             <div class="col-sm-10">
                                 <select id="session" name="session" class="form-control" required="required">
                                     <option value="0">Choose session</option>
+                                    <?php 
+                                        $year = date('Y'); 
+                                        $month = date('M');
+                                        for ($m=1; $m<=12; $m++) {
+                                            if ($m >= $month) {
+                                                $month = date('F', mktime(0,0,0,$m, 1, date('Y')));
+                                                echo '<option value='.$year.'.'.$month.'>'.$year.'.'.$month. '</option>';
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
