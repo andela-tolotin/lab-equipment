@@ -1,4 +1,4 @@
-<div class="modal fade" id="training-request">
+<div class="modal fade" id="list-accepted-request">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
