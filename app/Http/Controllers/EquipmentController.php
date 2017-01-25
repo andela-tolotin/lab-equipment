@@ -9,6 +9,16 @@ use LabEquipment\Equipment;
 
 class EquipmentController extends Controller
 {
+    public function EquipmentUsers(Request $request, $id)
+    {
+        //print $id; exit;
+        $equipment = Equipment::FindOneById($id);
+
+        if (count($equipment) > 0) {
+            return response()->json($equipment->bookings, 200);
+        }
+    }
+
     public function bookEquipment(Request $request, $id)
     {
         $equipment = Equipment::find($id);

@@ -8,23 +8,23 @@
 
   class TrainingRequest {
     getLabEquipment() {
-      let lab = new Lab;
+      let req = new TrainingRequest;
+
       let selectEquipment = $(document)
         .find('form#approve-request')
         .find('select#equipment');
+
       let tableBody = $(document)
         .find('form#approve-request')
         .find('table#display-training-request tbody');
 
       selectEquipment.on('change', function() {
         let _this = $(this);
-        let labId = _this.val();
-        const route = '/equipments/'+labId;
-        lab.makeAjaxCall(route, '', 'GET')
+        let equipmentId = _this.val();
+        const route = '/equipments/'+equipmentId+'/students';
+        req.makeAjaxCall(route, '', 'GET')
         .done(function(data) {
-            return toastr.success('Lab Equipments has been added');
-          }
-          return toastr.error('Lab Equipments not available');
+            return toastr.success('Lab Equipments users loaded');
         })
         .fail(function(error) {
           console.log(error);
