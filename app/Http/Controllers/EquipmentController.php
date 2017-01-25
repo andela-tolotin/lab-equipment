@@ -4,6 +4,7 @@ namespace LabEquipment\Http\Controllers;
 
 use Cloudder;
 use LabEquipment\Lab;
+use LabEquipment\LabUser;
 use Illuminate\Http\Request;
 use LabEquipment\Equipment;
 
@@ -16,7 +17,11 @@ class EquipmentController extends Controller
 
         if (count($equipment) > 0) {
             $equipmentLab = $equipment->lab;
-            //$labProfessor = $equipmentLab->labUser->user;
+
+            if (count($equipmentLab) > 0) {
+                $labUser =  LabUser::FindOneById($equipmentLab->id);
+                $labProfessor = $labUser->user->name;
+            }
 
             $bookings = $equipment->bookings;
             if (count($bookings) > 0) {
@@ -24,9 +29,7 @@ class EquipmentController extends Controller
                     $students[$index] = $booking->user;
                 }
             }
-            //$labProfessor
-            //return response()->json($students, 200);
-            return response()->json($equipmentLab, 200);
+            return response()->json([$labProfessor, $students], 200);
         }
 
         return response()->json([
