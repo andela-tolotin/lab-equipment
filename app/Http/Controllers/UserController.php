@@ -43,7 +43,7 @@ class UserController extends Controller
                 'date' => $request->session
             ];
             // send email
-            $this->sendEmail($data, $request->email);
+            //$this->sendEmail($data, $request->email);
 
             return redirect()->route('training_request_confirmation');
         // }
