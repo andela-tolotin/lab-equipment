@@ -16,6 +16,11 @@
                             You can reserve and use the instrument only after the training session and approval of the instructor.</small>
                         </p>
                         <div class="form-group">
+                            @if (session('message'))
+                            <div class="alert alert-error text-center">
+                                {{ session('message') }}
+                            </div>
+                            @endif
                             <label for="name" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ old('name') }}" required="required">
@@ -81,13 +86,13 @@
                         <div class="form-group">
                             <label for="new_password" class="col-sm-2 control-label">Enter New Password</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="new_password" name= "new_password" placeholder="Enter New Password">
+                                <input type="password" class="form-control" id="new_password" name= "new_password" placeholder="Enter New Password" required="required">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="com_password" class="col-sm-2 control-label">Confirm New Password</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" id="com_password" name="com_password" placeholder="Confirm New Password">
+                                <input type="password" class="form-control" id="com_password" name="com_password" placeholder="Confirm New Password" required="required">
                             </div>
                         </div>
                         <div class="form-group">
