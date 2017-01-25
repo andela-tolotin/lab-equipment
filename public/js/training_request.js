@@ -24,7 +24,10 @@
         const route = '/equipments/'+equipmentId+'/students';
         req.makeAjaxCall(route, '', 'GET')
         .done(function(data) {
-            return toastr.success('Lab Equipments users loaded');
+          if (data.length > 0) {
+
+          }
+          return toastr.success('Lab Equipments users loaded');
         })
         .fail(function(error) {
           console.log(error);
@@ -33,8 +36,20 @@
       });
     }
 
-    displayTrainingRequest() {
-
+    displayTrainingRequest(data) {
+      // let tableRow = '';
+      // for (let user in data) {
+      //   tableRow += '<tr>' +
+      //     '<td>'+data[user].student_id+'</td>' +
+      //     '<td>'+data[user].name+'</td>' +
+      //     '<td>'+data[user].email+'</td>' +
+      //     '<td>'+data[user].phone+'</td>'+
+      //     tableRow += '</td>' + 
+      //     '<td><a href="#"  class="student-edit" id='+data[user].id+'>Edit</a></td>';
+      //    tableRow += '</tr>';
+      //   counter++;
+      // }
+      // return tableRow;
     }
 
     makeAjaxCall(url, params, method) {

@@ -11,12 +11,28 @@ class EquipmentController extends Controller
 {
     public function EquipmentUsers(Request $request, $id)
     {
-        //print $id; exit;
+        $students = [];
         $equipment = Equipment::FindOneById($id);
 
         if (count($equipment) > 0) {
-            return response()->json($equipment->bookings, 200);
+            $equipmentLab = $equipment->lab;
+            //$labProfessor = $equipmentLab->labUser->user;
+
+            $bookings = $equipment->bookings;
+            if (count($bookings) > 0) {
+                foreach($bookings as $index => $booking) {
+                    $students[$index] = $booking->user;
+                }
+            }
+            //$labProfessor
+            //return response()->json($students, 200);
+            return response()->json($equipmentLab, 200);
         }
+
+        return response()->json([
+            'message' => 'No requesters for this equipment',
+        ]);
+
     }
 
     public function bookEquipment(Request $request, $id)
