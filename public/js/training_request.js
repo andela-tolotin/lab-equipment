@@ -9,7 +9,7 @@
 
   class TrainingRequest {
     selectTrainingRequest() {
-      let selectedStudent = [];
+      let selectedStudents = [];
       let req = new TrainingRequest;
       let smtBtn = $(document)
         .find('form#approve-request button.btn-default');
@@ -55,8 +55,10 @@
         }
 
         checkBox.each(function(index, el) {
-          selectedStudent.push($(this).attr('data-name'));
+          selectedStudents.push($(this).attr('data-name'));
         });
+
+        let bookingDate = year+'/'+month+'/'+day;
 
         let modalContent = req.prepareModal(bookingDate, selectedStudents, location);
         modal.find('div.modal-body').html(modalContent);
@@ -68,16 +70,17 @@
     prepareModal(bookingDate, selectedStudents, location) {
       let stuff = '<h5 class="text-center">Are you sure to confirm this request and send a confirmation email?</h5>';
       let dateSelected = '<h5 class="text-center">'+bookingDate+'</h5>';
-      let trainingLocation = '<h5 class="text-center">'+bookingDate+'</h5>';
+      let trainingLocation = '<h5 class="text-center">'+location+'</h5>';
       let info = '<h5 class="text-center">If it\'s correct press ok</h5>';
-      let students = '<ul>';
+      let students = '<ul style="list-style:none;">';
         for(let i = 0; i < selectedStudents.length; i++) {
-          slots += '<li>'+selectedStudents[i]+'</li>';
+          students += '<li><strong>'+decodeURI(selectedStudents[i])+'</strong></li>';
         }
         students += '</ul>';
 
-        stuff += dateSelected;
         stuff += students;
+        stuff += dateSelected;
+        stuff += trainingLocation;
         stuff +=  info;
 
       return stuff;
