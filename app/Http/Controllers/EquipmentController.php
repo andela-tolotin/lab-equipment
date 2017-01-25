@@ -5,6 +5,7 @@ namespace LabEquipment\Http\Controllers;
 use Auth;
 use Cloudder;
 use LabEquipment\Lab;
+use LabEquipment\User;
 use LabEquipment\LabUser;
 use Illuminate\Http\Request;
 use LabEquipment\Equipment;
@@ -17,12 +18,8 @@ class EquipmentController extends Controller
         $equipment = Equipment::FindOneById($id);
 
         if (count($equipment) > 0) {
-            $equipmentLab = $equipment->lab;
-
-            if (count($equipmentLab) > 0) {
-                $labUser =  LabUser::FindOneById($equipmentLab->id);
-                $labProfessor = $labUser->user->name;
-            }
+            $user =  User::FindOneById($equipment->user_id);
+            $labProfessor = $user->name;
 
             $bookings = $equipment->bookings;
             if (count($bookings) > 0) {
