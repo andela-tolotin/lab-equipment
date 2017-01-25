@@ -2,6 +2,7 @@
 
 namespace LabEquipment\Http\Controllers;
 
+use Auth;
 use Cloudder;
 use LabEquipment\Lab;
 use LabEquipment\LabUser;
@@ -62,6 +63,7 @@ class EquipmentController extends Controller
             'lab_id' => $request->assign_lab,
             'availability' => $request->availability,
             'equipment_photo' => $this->handleCloudinaryFileUpload($request),
+            'user_id' => Auth::user()->id,
         ]);
 
         if (count($equipment) > 0) {
