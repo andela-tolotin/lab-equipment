@@ -24,10 +24,13 @@
         const route = '/equipments/'+equipmentId+'/students';
         req.makeAjaxCall(route, '', 'GET')
         .done(function(data) {
-          if (data.length > 0) {
-
+          if (data[1].length > 0) {
+            let students = req.displayTrainingRequest(data);
+            tableBody.html(students);
+            return toastr.success('Student loaded');
           }
-          return toastr.success('Lab Equipments users loaded');
+          tableBody.html('');
+          return toastr.error('No requests available for this equipment');
         })
         .fail(function(error) {
           console.log(error);
@@ -37,19 +40,21 @@
     }
 
     displayTrainingRequest(data) {
-      // let tableRow = '';
-      // for (let user in data) {
-      //   tableRow += '<tr>' +
-      //     '<td>'+data[user].student_id+'</td>' +
-      //     '<td>'+data[user].name+'</td>' +
-      //     '<td>'+data[user].email+'</td>' +
-      //     '<td>'+data[user].phone+'</td>'+
-      //     tableRow += '</td>' + 
-      //     '<td><a href="#"  class="student-edit" id='+data[user].id+'>Edit</a></td>';
-      //    tableRow += '</tr>';
-      //   counter++;
-      // }
-      // return tableRow;
+      let tableRow = '';
+      let labProf = data[0];
+      let students = data[1];
+      for (let i = 0; i < students.length; i++) {
+        console.log(students[i].student_id);
+        tableRow += '<tr>' +
+          '<td>'+students[i].student_id+'</td>' +
+          '<td>'+students[i].name+'</td>' +
+          '<td>'+students[i].email+'</td>' +
+          '<td>'+students[i].phone+'</td>'+
+          '<td>'+labProf+'</td>'+
+          '<td><input type="checkbox" class="form-control training-requester" id="training-requester" value='+students[i].id+'></td>';
+         tableRow += '</tr>';
+      }
+      return tableRow;
     }
 
     makeAjaxCall(url, params, method) {
