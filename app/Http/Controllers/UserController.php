@@ -66,8 +66,9 @@ class UserController extends Controller
 
         if ($newPassword !== $confirmPassword) {
             return redirect()
-                ->back()
-                ->with('message', 'Password mismatched');
+                ->route('request_training')
+                ->with('message', 'Password mismatched')
+                ->withInput();
         }
 
         $user = User::create([
