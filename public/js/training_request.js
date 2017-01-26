@@ -105,7 +105,9 @@
               xhr.abort();
             });
           });
-        return false;
+          if (requests[0].readyState == 4) {
+            requests[0].abort();
+          }
       });
     }
 
@@ -207,7 +209,10 @@
         'X-CSRF-Token': $('input[name="_token"]').val()
       },
       url: url,
+<<<<<<< HEAD
       timeout: 1000,
+=======
+>>>>>>> 9c5f9e2e8024f01088e6e8f0e8956218afebead8
       type: method,
       dataType: 'json',
       data: params,
