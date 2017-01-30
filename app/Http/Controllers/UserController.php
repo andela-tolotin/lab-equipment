@@ -35,31 +35,32 @@ class UserController extends Controller
         $equipment = $request->equipment;
         $equipmentName = $request->equipment_name;
 
-        $trainingRequests = Training::where('equipment_id', $equipment)
-            ->distinct()
-            ->get();
-
-        if (count($trainingRequests) > 0) {
-            if (count($students) > 0) {
-                foreach($students as $student) {
-                    // Send confirmation email
-                    $user = User::findOneById($student);
-                    // send email
-                    $data = [
-                        'name' => $user->name,
-                        'email' => $user->email, 
-                        'equipment' => $equipmentName,
-                    ];
-                    $this->sendTrainingCompletionEmail($data, $user->email);
-                }
+        // Update the booking
+        if (count($students) > 0) {
+            foreach($students as $student) {
+                $training = Training::where('equipment_id', $equipment)
+                    //->where('status', 0)
+                    ->where('user_id', $student)
+                    ->first();
+                $training->status = 1;
+                $training->save();
+                // Send confirmation email
+                $user = User::findOneById($student);
+                // send email
+                $data = [
+                    'name' => $user->name,
+                    'email' => $user->email, 
+                    'equipment' => $equipmentName,
+                ];
+                $this->sendTrainingCompletionEmail($data, $user->email);
             }
-
-            if (!is_null($trainingRequests)) {
-                return response()->json($trainingRequests, 200);
-            }
-
-            return response()->json(['message' => 'Error completing request'], 400);
         }
+
+        if (!is_null($training)) {
+            return response()->json($training, 200);
+        }
+
+        return response()->json(['message' => 'Error completing request'], 400);
     }
 
     public function confirmTrainingRequest(Request $request)
@@ -94,8 +95,6 @@ class UserController extends Controller
             
             // marked them as completedly left booking
             return response()->json(['message' => 'successful'], 200);
-
-            //return response()->json(['message' => 'Error creating training'], 400);
         }
     }
 

@@ -165,7 +165,7 @@
                                 // dump($booking);
                             ?>
                             <td><strong>Lab: {{
-                            !is_null(Auth::user()->labUser->user->name)? Auth::user()->labUser->user->name: 'Nill' }}</strong></td>
+                            !is_null(Auth::user()->name)? Auth::user()->name: 'Nill' }}</strong></td>
                             <td><a  class="pull-right" href="{{ route('my_profile') }}" title="{{ Auth::user()-> name}}"><strong>See my page</strong></a></td>
                         </tr>
                     </tbody>
