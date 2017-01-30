@@ -195,10 +195,14 @@ class UserController extends Controller
 
     public function viewMyProfile()
     {
-        $equipments = Equipment::findAll();
+        $trainings = Training::where('user_id', Auth::user()->id)
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+
         $bookings =  $this->showMyBookingHistory();
 
-        return view('student.my_profile', compact('equipments', 'bookings'));
+        return view('student.my_profile', compact('trainings', 'bookings'));
     }
 
     protected function showMyBookingHistory()
