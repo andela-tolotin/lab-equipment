@@ -40,10 +40,8 @@ class HomeController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
-        dd($trainings[0]->equipment);
-
         return view('admin.admin', compact(
-            'users', 'labs', 'equipments', 'adminUsers', 'bookings'
+            'users', 'labs', 'equipments', 'adminUsers', 'bookings', 'trainings'
         ));
     }
 
