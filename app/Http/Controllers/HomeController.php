@@ -35,12 +35,12 @@ class HomeController extends Controller
         $labs = Lab::findAll();
         $equipments = Equipment::findAll();
 
-        $training = Training::where('user_id', Auth::user()->id)
+        $trainings = Training::where('user_id', Auth::user()->id)
             ->where('status', 1)
             ->orderBy('id', 'desc')
             ->get();
 
-        //dd($training);
+        dd($trainings[0]->equipment);
 
         return view('admin.admin', compact(
             'users', 'labs', 'equipments', 'adminUsers', 'bookings'

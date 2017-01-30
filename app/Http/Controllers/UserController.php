@@ -39,9 +39,9 @@ class UserController extends Controller
         if (count($students) > 0) {
             foreach($students as $student) {
                 $training = Training::where('equipment_id', $equipment)
-                    //->where('status', 0)
                     ->where('user_id', $student)
                     ->first();
+                // Update user status
                 $training->status = 1;
                 $training->save();
                 // Send confirmation email
